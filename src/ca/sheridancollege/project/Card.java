@@ -16,7 +16,6 @@ public abstract class Card
     public static void main(String[] args){
     
     }  
- 
     @Override
     public abstract String toString();
     

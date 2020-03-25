@@ -10,19 +10,12 @@ import java.util.Scanner;
 
 public class Game
 {
-    private final String gameName;
+    private String gameName;
     private static int cash;
     private static int bet;
     
     private ArrayList <Player> players;
-    
-    public Game(String givenName)
-    {
-        gameName = givenName;
-        players = new ArrayList();
-    }
-
-    
+     
     public String getGameName() 
     {
         return gameName;

@@ -6,16 +6,15 @@
 package ca.sheridancollege.project;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
-/**
- * The class that models your game. You should create a more specific
- * child of this class and instantiate the methods given.
- * @author dancye, 2018
- */
-public abstract class Game 
+public class Game
 {
-    private final String gameName;//the title of the game
-    private ArrayList <Player> players;// the players of the game
+    private final String gameName;
+    private static int cash;
+    private static int bet;
+    
+    private ArrayList <Player> players;
     
     public Game(String givenName)
     {
@@ -23,43 +22,70 @@ public abstract class Game
         players = new ArrayList();
     }
 
-    /**
-     * @return the gameName
-     */
+    
     public String getGameName() 
     {
         return gameName;
     }
     
-     /**
-     * @return the players of this game
-     */
     public ArrayList <Player> getPlayers() 
     {
         return players;
     }
 
-    /**
-     * @param players the players of this game
-     */
     public void setPlayers(ArrayList <Player> players) 
     {
-        this.players = players;
+        players = players;
     }
     
-    /**
-     * Play the game. This might be one method or many method calls depending
-     * on your game.
-     */
-    public abstract void play();
-    
-    /**
-     * When the game is over, use this method to declare and display a winning
-     * player.
-     */
-    public abstract void declareWinner();
+    public static int Bet(int cash){
+        Scanner sc=new Scanner(System.in);
+        int bet=sc.nextInt();
+        while(bet>cash)
+        {
+        System.out.println("You cannot bet more cash than you have!");
+        System.out.println("How much would you like to bet?");
+        bet=sc.nextInt();
+        }
+        return bet;
+            }
 
-   
-    
-}//end class
+        public static void Win(){
+            System.out.println("Congratulations, you win!");
+            cash=cash+bet;
+            System.out.println("Cash: "+cash);
+                }
+
+        public static void Lose(){
+            System.out.println("Sorry, you lose!");
+            cash=cash-bet;
+            System.out.println("Cash: "+cash);
+                }
+
+        public static void Push(){
+            System.out.println("It's a push!");
+            System.out.println("You get your money back.");
+            System.out.println("Cash: "+cash);
+                }
+        
+        public static boolean checkBust(int handvalue){
+              if(handvalue>21) {
+              System.out.println("You have busted!");
+              return true;
+            }
+        return false;
+        }
+
+        public static boolean isyesorno(String answer){
+         if(answer.equals("yes") || answer.equals("no")) {
+             return true;
+         }
+            return false;
+    }
+
+        public static void fivecardtrick(){
+             System.out.println("You have achieved a five card trick!");
+             Win();
+        }  
+}
 

@@ -21,11 +21,12 @@ private static String name;
 public static void main(String[] args){
     
     Game game=new Game();
-    System.out.println("Hi! What is your name?");
+    System.out.println("Welcome to BlackJack Game!");
+    System.out.println("What is your name?");
     Scanner scan = new Scanner(System.in);
     name = scan.nextLine();
     
-    System.out.println("Hello, "+name+", lets play some BlackJack!");
+    System.out.println(name+", lets play BlackJack!");
     System.out.println("How much cash do you want to start with?");
     Scanner money = new Scanner(System.in);
     cash = money.nextInt();
@@ -48,10 +49,10 @@ public static void main(String[] args){
         System.out.println(hand);
         int handvalue = calcHandValue(hand);
         System.out.println("The dealer is showing: ");
-        dealer.showFirstCard();
-        if(hasBlackJack(handvalue) && dealer.hasBlackJack())
+        dealer.showCard();
+        if(hasBlackJack(handvalue) && dealer.hasGame())
         {
-            game.Push();
+            game.Blow();
         }
         else if(hasBlackJack(handvalue))
         {
@@ -60,10 +61,10 @@ public static void main(String[] args){
             cash=cash+bet;
             game.declareWin();
         }
-        else if(dealer.hasBlackJack())
+        else if(dealer.hasGame())
         {
             System.out.println("Here is the dealer's hand:");
-            dealer.showHand();
+            dealer.showHandler();
             game.declareLose();
         }
         else
@@ -73,7 +74,7 @@ public static void main(String[] args){
                 System.out.println("Would you like to double down?");
                 Scanner doubledown = new Scanner(System.in);
                 String doubled = doubledown.nextLine();
-                while(!game.isyesorno(doubled))
+                while(!game.Choice(doubled))
                 {
                     System.out.println("Please enter yes or no.");
                     doubled = doubledown.nextLine();
@@ -100,7 +101,7 @@ public static void main(String[] args){
                 System.out.println("Your hand is now:");
                 System.out.println(hand);
                 handvalue = calcHandValue(hand);
-                if(game.checkBust(handvalue))
+                if(game.Busted(handvalue))
                 {
                     game.declareLose();
                     break;
@@ -115,10 +116,10 @@ public static void main(String[] args){
             }
             if(hitter.equals("stand"))
             {
-                int dealerhand = dealer.takeTurn(showCard);
+                int dealerhand = dealer.yourTurn(showCard);
                 System.out.println("");
                 System.out.println("Here is the dealer's hand:");
-                dealer.showHand();
+                dealer.showHandler();
                 if(dealerhand>21)
                 {
                     game.declareWin();
@@ -129,7 +130,7 @@ public static void main(String[] args){
                     int deal = 21-dealerhand;
                     if(you==deal)
                     {
-                        game.Push();
+                        game.Blow();
                     }
                     if(you<deal)
                     {
@@ -145,7 +146,7 @@ public static void main(String[] args){
     System.out.println("Would you like to play again?");
     Scanner yesorno = new Scanner(System.in);
     String answer = yesorno.nextLine();
-    while(!game.isyesorno(answer))
+    while(!game.Choice(answer))
             {
                 System.out.println("Please answer yes or no.");
                 answer = yesorno.nextLine();
@@ -224,6 +225,5 @@ public static boolean isHitorStand(String hitter)
         return true;
     }
     return false;
-}
-    
+    }   
 }

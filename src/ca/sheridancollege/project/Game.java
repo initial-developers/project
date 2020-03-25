@@ -50,13 +50,13 @@ public class Game
             System.out.println("Cash: "+cash);
                 }
 
-        public static void Push(){
+        public static void Blow(){
             System.out.println("It's a push!");
             System.out.println("You get your money back.");
             System.out.println("Cash: "+cash);
                 }
         
-        public static boolean checkBust(int handvalue){
+        public static boolean Busted(int handvalue){
               if(handvalue>21) {
               System.out.println("You have busted!");
               return true;
@@ -64,7 +64,7 @@ public class Game
         return false;
         }
 
-        public static boolean isyesorno(String answer){
+        public static boolean Choice(String answer){
          if(answer.equals("yes") || answer.equals("no")) {
              return true;
          }

@@ -7,42 +7,42 @@ package ca.sheridancollege.project;
 
 public class Card {
     
-private int rank;    //represents the rank of a card
-private int suit;   //represents the suit of a card
-private int value;  //represents the value of a card
-private static String[] ranks = {"Joker","Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King"};
+private int position;    
+private int sets;  
+private int value;  
+private static String[] positions = {"Joker","Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King"};
 private static String[] suits = {"Clubs","Diamonds","Hearts","Spades"};
 
 public Card (int suit, int values)
 {
-    rank=values;
+    position=values;
     suit=suit;
 }
 
 @Override
     public String toString(){
-        return ranks[rank]+" of "+suits[suit];
+        return positions[position]+" of "+suits[sets];
     }
 
-public int getRank(){
-    return rank;
+public int getPosition(){
+    return position;
     }
-public int getSuit(){
-    return suit;
+public int getSet(){
+    return sets;
     }
 
 public int getValue(){
-    if(rank>10)
+    if(position>10)
     {
         value=10;
     }
-    else if(rank==1)
+    else if(position==1)
     {
         value=11;
     }
     else
     {
-        value=rank;
+        value=position;
     }
     return value;
     }

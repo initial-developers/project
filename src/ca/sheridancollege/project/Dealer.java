@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Dealer {
 ArrayList<Card> hand;
-private int handvalue=0;
+private int valueSc=0;
 private Card[] aHand;
 private int AceCounter;
 
@@ -25,58 +25,58 @@ public Dealer(GroupOfCards showCards)
     aHand = hand.toArray(aHand);
     for(int i=0; i<aHand.length; i++)
     {
-        handvalue += aHand[i].getValue();
+        valueSc += aHand[i].getValue();
         if(aHand[i].getValue()==11)
         {
             AceCounter++;
         }
-        while(AceCounter>0 && handvalue>21)
+        while(AceCounter>0 && valueSc>21)
         {
-            handvalue-=10;
+            valueSc-=10;
             AceCounter--;
         }
     }
 }
 
-public void showFirstCard()
+public void showCard()
 {
     Card[] firstCard = new Card[]{};
     firstCard = hand.toArray(firstCard);
     System.out.println("["+firstCard[0]+"]");
 }
 
-public void Hit(GroupOfCards showCards)
+public void dealerHit(GroupOfCards showCards)
 {
     hand.add(showCards.drawCard());
     aHand = hand.toArray(aHand);
-    handvalue = 0;
+    valueSc = 0;
     for(int i=0; i<aHand.length; i++)
     {
-        handvalue += aHand[i].getValue();
+        valueSc += aHand[i].getValue();
         if(aHand[i].getValue()==11)
         {
             AceCounter++;
         }
-        while(AceCounter>0 && handvalue>21)
+        while(AceCounter>0 && valueSc>21)
         {
-            handvalue-=10;
+            valueSc-=10;
             AceCounter--;
         }
     }
 }
 
-public boolean wantsToHit()
+public boolean tryHit()
 {
-    if(handvalue<17)
+    if(valueSc<17)
     {
         return true;
     }
     return false;
 }
 
-public boolean hasBlackJack()
+public boolean hasGame()
 {
-    if(hand.size()==2 && handvalue==21)
+    if(hand.size()==2 && valueSc==21)
     {
         System.out.println("The dealer has blackjack!");
         return true;
@@ -84,17 +84,17 @@ public boolean hasBlackJack()
     return false;
 }
 
-public void showHand()
+public void showHandler()
 {
     System.out.println(hand);
 }
 
 public int getHandValue()
 {
-    return handvalue;
+    return valueSc;
 }
 
-public boolean busted(int handvalue)
+public boolean boosted(int handvalue)
 {
     if(handvalue>21)
     {
@@ -104,22 +104,22 @@ public boolean busted(int handvalue)
     return false;
 }
 
-public int takeTurn(GroupOfCards showCards)
+public int yourTurn(GroupOfCards showCards)
 {
-    while(wantsToHit())
+    while(tryHit())
     {
         System.out.println("The dealer hits");
-        Hit(showCards);
-        if(busted(handvalue))
+        dealerHit(showCards);
+        if(boosted(valueSc))
         {
             break;
         }
     }
-    if(handvalue<=21)
+    if(valueSc<=21)
     {
         System.out.print("The dealer stands.");
     }
-    return handvalue;
+    return valueSc;
 }
     
 }

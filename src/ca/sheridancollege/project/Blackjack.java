@@ -118,7 +118,7 @@ public static void main(String[] args){
             {
                 int dealerhand = dealer.yourTurn(showCard);
                 System.out.println("");
-                System.out.println("Here is the dealer's hand:");
+                System.out.println("Here is the dealer's hand cards:");
                 dealer.showHandler();
                 if(dealerhand>21)
                 {

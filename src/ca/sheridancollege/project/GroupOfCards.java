@@ -5,56 +5,45 @@
  */
 package ca.sheridancollege.project;
 
-//import class for arraya and collections
-
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Random;
 
-/**
- * A concrete class that represents any grouping of cards for a Game.
- * HINT, you might want to subclass this more than once.
- * The group of cards has a maximum size attribute which is flexible for reuse.
- * @author dancye
- */
 public class GroupOfCards 
 {
-   
-    //The group of cards, stored in an ArrayList
-    private ArrayList <Card> cards;
-    private int size;//the size of the grouping
-    
-    public GroupOfCards(int givenSize)
+ private ArrayList<Card> showCards;     //represents a deck of cards
+public GroupOfCards()
+{
+    showCards = new ArrayList<Card>();
+    for(int i=0; i<4; i++)
     {
-        size = givenSize;
+        for(int j=1; j<=13; j++)
+        {
+            showCards.add(new Card (i,j));
+        }
     }
-    
-    /**
-     * A method that will get the group of cards as an ArrayList
-     * @return the group of cards.
-     */
-    public ArrayList<Card> showCards()
+}
+/*
+ * Shuffles the deck by changing the indexes of 200 random pairs of cards in the deck.
+ */
+public void shuffle()
+{
+    Random random = new Random();
+    Card temp;
+    for(int i=0; i<200; i++)
     {
-        return cards;
+        int index1 = random.nextInt(showCards.size()-1);
+        int index2 = random.nextInt(showCards.size()-1);
+        temp = showCards.get(index2);
+        showCards.set(index2, showCards.get(index1));
+        showCards.set(index1, temp);
     }
-    
-    public void shuffle()
-    {
-        Collections.shuffle(cards);
-    }
+}
 
-    /**
-     * @return the size of the group of cards
-     */
-    public int getSize() {
-        return size;
-    }
-
-    /**
-     * @param givenSize the max size for the group of cards
-     */
-    public void setSize(int givenSize) {
-        size = givenSize;
-    }
+public Card drawCard()
+{
+    return showCards.remove(0);
+}  
     
-}//end class
+    
+}
 

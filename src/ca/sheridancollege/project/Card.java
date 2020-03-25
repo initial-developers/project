@@ -5,18 +5,49 @@
  */
 package ca.sheridancollege.project;
 
-/**
- * A class to be used as the base Card class for the project. Must be general
- * enough to be instantiated for any Card game. Students wishing to add to the code 
- * should remember to add themselves as a modifier.
- * @author dancye, 2018
- */
-public abstract class Card 
+public class Card {
+    
+private int rank;    //represents the rank of a card
+private int suit;   //represents the suit of a card
+private int value;  //represents the value of a card
+private static String[] ranks = {"Joker","Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King"};
+private static String[] suits = {"Clubs","Diamonds","Hearts","Spades"};
+
+public Card (int suit, int values)
 {
-    public static void main(String[] args){
-    
+    rank=values;
+    suit=suit;
+}
+
+@Override
+    public String toString(){
+        return ranks[rank]+" of "+suits[suit];
+    }
+
+public int getRank(){
+    return rank;
+    }
+public int getSuit(){
+    return suit;
+    }
+
+public int getValue(){
+    if(rank>10)
+    {
+        value=10;
+    }
+    else if(rank==1)
+    {
+        value=11;
+    }
+    else
+    {
+        value=rank;
+    }
+    return value;
+    }
+
+public void setValue(int set){
+    value = set;
     }  
-    @Override
-    public abstract String toString();
-    
 }

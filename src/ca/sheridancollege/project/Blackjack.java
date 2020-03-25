@@ -21,13 +21,11 @@ private static String name;
 public static void main(String[] args){
     
     Game game=new Game();
-    
-    System.out.println("Welcome!");
-    System.out.println("What is your name?");
+    System.out.println("Hi! What is your name?");
     Scanner scan = new Scanner(System.in);
     name = scan.nextLine();
     
-    System.out.println(name+", lets play some BlackJack!");
+    System.out.println("Hello, "+name+", lets play some BlackJack!");
     System.out.println("How much cash do you want to start with?");
     Scanner money = new Scanner(System.in);
     cash = money.nextInt();
@@ -60,13 +58,13 @@ public static void main(String[] args){
             System.out.println("You have BlackJack!");
             System.out.println("You win 2x your money back!");
             cash=cash+bet;
-            game.Win();
+            game.declareWin();
         }
         else if(dealer.hasBlackJack())
         {
             System.out.println("Here is the dealer's hand:");
             dealer.showHand();
-            game.Lose();
+            game.declareLose();
         }
         else
         {
@@ -104,7 +102,7 @@ public static void main(String[] args){
                 handvalue = calcHandValue(hand);
                 if(game.checkBust(handvalue))
                 {
-                    game.Lose();
+                    game.declareLose();
                     break;
                 }
                 if(handvalue<=21 && hand.size()==5)
@@ -123,7 +121,7 @@ public static void main(String[] args){
                 dealer.showHand();
                 if(dealerhand>21)
                 {
-                    game.Win();
+                    game.declareWin();
                 }
                 else
                 {
@@ -135,11 +133,11 @@ public static void main(String[] args){
                     }
                     if(you<deal)
                     {
-                        game.Win();
+                        game.declareWin();
                     }
                     if(deal<you)
                     {
-                        game.Lose();
+                        game.declareLose();
                     }
                 }
             }

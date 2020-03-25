@@ -10,17 +10,12 @@ import java.util.Scanner;
 
 public class Game
 {
-    private String gameName;
+    
     private static int cash;
     private static int bet;
     
     private ArrayList <Player> players;
-     
-    public String getGameName() 
-    {
-        return gameName;
-    }
-    
+   
     public ArrayList <Player> getPlayers() 
     {
         return players;
@@ -43,13 +38,13 @@ public class Game
         return bet;
             }
 
-        public static void Win(){
+        public static void declareWin(){
             System.out.println("Congratulations, you win!");
             cash=cash+bet;
             System.out.println("Cash: "+cash);
                 }
 
-        public static void Lose(){
+        public static void declareLose(){
             System.out.println("Sorry, you lose!");
             cash=cash-bet;
             System.out.println("Cash: "+cash);
@@ -78,7 +73,7 @@ public class Game
 
         public static void fivecardtrick(){
              System.out.println("You have achieved a five card trick!");
-             Win();
+             declareWin();
         }  
 }
 

@@ -12,7 +12,7 @@ package ca.sheridancollege.project;
 public abstract class Player 
 {
     private String playerID; //The Player iD gives the Identity to players
-    
+    private String GameName; //The name of the game
     /**
      * A constructor that allows you to set the player's unique ID
      */
@@ -21,6 +21,11 @@ public abstract class Player
         playerID= name;
     }
    //getters and setters for the PlayerID
+
+    public String getGameName() {
+        return GameName;
+    }
+    
     public String getPlayerID() 
     {
         return playerID;

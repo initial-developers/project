@@ -2,12 +2,14 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+ * The blackjack game is quite difficult game to learn but it is interesting.
  */
 package ca.sheridancollege.project;
 
 import java.util.ArrayList;
 
 public class Dealer {
+    
 ArrayList<Card> hand;
 private int valueSc=0;
 private Card[] aHand;

@@ -10,10 +10,10 @@ import java.util.Random;
 
 public class GroupOfCards 
 {
- private ArrayList<Card> showCards;     //represents a deck of cards
+ private final ArrayList<Card> showCards;     //represents a deck of cards
 public GroupOfCards()
 {
-    showCards = new ArrayList<Card>();
+    showCards = new ArrayList<>();
     for(int i=0; i<4; i++)
     {
         for(int j=1; j<=13; j++)

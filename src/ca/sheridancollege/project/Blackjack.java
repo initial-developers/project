@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ca.sheridancollege.project;
 
 import java.util.ArrayList;
@@ -22,11 +17,26 @@ public static void main(String[] args){
     
     Game game=new Game();
     System.out.println("Welcome to BlackJack Game!");
-    System.out.println("What is your name?");
+    System.out.println("What is Username?");
     Scanner scan = new Scanner(System.in);
     name = scan.nextLine();
     
     System.out.println(name+", lets play BlackJack!");
+    boolean isValid=false;
+        do
+        {
+            System.out.println("Please enter a VALID password, password must have:");
+            System.out.println("A length of at least 8");
+            System.out.println("At least one special character");
+            System.out.println("At least one uppercase letter");
+            Scanner sc = new Scanner(System.in);
+            String pass = sc.nextLine();
+            if (checkLength(pass))
+            {
+               isValid=true;
+            }
+        }while(!isValid);
+        System.out.println("Valid password, accepted!");
     System.out.println("How much cash do you want to start with?");
     Scanner money = new Scanner(System.in);
     cash = money.nextInt();
@@ -225,5 +235,9 @@ public static boolean isHitorStand(String hitter)
         return true;
     }
     return false;
-    }   
+    }  
+public static boolean checkLength(String pass)
+    {
+        return pass.length()>=8;
+    }
 }
